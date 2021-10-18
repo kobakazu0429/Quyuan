@@ -104,7 +104,7 @@
                 {{#if (ne image.path path)}}
                   <div class="swiper-slide">
                     {{#if this.panorama_image}}
-                      <img src="{{{this.path}}}" onclick="Quyuan.openPanorama('{{{this.path}}}');" class="panorama">
+                      <img src="{{{this.path}}}" onclick="ChuQuyuan.openPanorama('{{{this.path}}}');" class="panorama">
                     {{else}}
                       <a href="{{{this.path}}}" target="_blank">
                         <img src="{{{this.path}}}">
@@ -121,7 +121,7 @@
         {{/if}}`;
         popupHtmlTemplate += `</div>`;
 
-        return Quyuan.templateExtractor({
+        return ChuQuyuan.templateExtractor({
           geojson,
           templates: {
             html: popupHtmlTemplate,
@@ -140,7 +140,7 @@
                 ":scope .swiper .swiper-slide"
               ).length;
 
-              Quyuan.createSwiper({ loop: slideCount > 1 });
+              ChuQuyuan.createSwiper({ loop: slideCount > 1 });
             });
 
             marker.addTo(mymap);
