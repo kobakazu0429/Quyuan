@@ -34,3 +34,7 @@
   align-self: center;
   background-color: #000;
 }
+
+img.panorama {
+  cursor: pointer;
+}
