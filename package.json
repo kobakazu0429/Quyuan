@@ -5,6 +5,10 @@
   "repository": "https://github.com/code4history/ChuQuyuan.git",
   "author": "kobakazu0429 <kobakazu10@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "NODE_ENV=production webpack --color --progress",
     "dev": "NODE_ENV=development webpack serve",
