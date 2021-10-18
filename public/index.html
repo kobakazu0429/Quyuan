@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    />
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      #mapid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .leaflet-popup-content {
+        margin: 9px;
+      }
+
+      .leaflet-popup-content-wrapper {
+        border-radius: 6px;
+        min-width: auto;
+      }
+
+      .leaflet-popup-content {
+        border-radius: 6px;
+        min-width: 400px !important;
+        max-width: 500px !important;
+        max-height: 300px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapid"></div>
+
+    <div id="panorama-container">
+      <div class="close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <div id="viewer"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+  </body>
+  <script>
+    const MAP_CFG = {
+      accessToken:
+        "pk.eyJ1IjoicmVraXNoaWtva3VkbyIsImEiOiJjazRoMmF3dncwODU2M2ttdzI2aDVqYXVwIn0.8Hb9sekgjfck6Setxk5uVg",
+      style: "mapbox://styles/moritoru/ck4s6w8bd0sb51cpp9vn7ztty",
+      latLng: [36.2461984, 139.5278149],
+      zoom: 15,
+      minZoom: 5,
+      maxZoom: 21,
+    };
+
+    const MARKER_CFG = {
+      geoJson: "./demo.geojson",
+    };
+
+    const mymap = L.map("mapid", {
+      maxZoom: MAP_CFG.maxZoom,
+    }).setView(MAP_CFG.latLng, MAP_CFG.zoom);
+
+    L.mapboxGL({
+      accessToken: MAP_CFG.accessToken,
+      style: MAP_CFG.style,
+      maxZoom: MAP_CFG.maxZoom,
+      minZoom: MAP_CFG.minZoom,
+    }).addTo(mymap);
+
+    fetch(MARKER_CFG.geoJson)
+      .then(async (data) => data.json())
+      .then((geojson) => {
+        let popupHtmlTemplate = "";
+
+        popupHtmlTemplate += `<div class="poi">`;
+        popupHtmlTemplate += `{{#if (gt images.length 1)}}
+          <b>その他の画像:</b><br>
+          <div class="swiper swiper-images">
+            <div class="swiper-wrapper">
+              {{#each images}}
+                {{#if (ne image.path path)}}
+                  <div class="swiper-slide">
+                    {{#if this.panorama_image}}
+                      <img src="{{{this.path}}}" onclick="Quyuan.openPanorama('{{{this.path}}}');" class="panorama">
+                    {{else}}
+                      <a href="{{{this.path}}}" target="_blank">
+                        <img src="{{{this.path}}}">
+                      </a>
+                    {{/if}}
+                  </div>
+                {{/if}}
+              {{/each}}
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+        {{/if}}`;
+        popupHtmlTemplate += `</div>`;
+
+        return Quyuan.templateExtractor({
+          geojson,
+          templates: {
+            html: popupHtmlTemplate,
+          },
+        });
+      })
+      .then((geojson) => {
+        geojson.features.forEach((feature) => {
+          if (feature.geometry) {
+            // source file coordinates are ordered by lnglat, but should be latlng.
+            const marker = L.marker(
+              feature.geometry.coordinates.reverse()
+            ).bindPopup(feature.result.html);
+            marker.on("click", (e) => {
+              const slideCount = document.querySelectorAll(
+                ":scope .swiper .swiper-slide"
+              ).length;
+
+              Quyuan.createSwiper({ loop: slideCount > 1 });
+            });
+
+            marker.addTo(mymap);
+          }
+        });
+      });
+  </script>
+</html>

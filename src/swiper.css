@@ -1,0 +1,12 @@
+.swiper-wrapper {
+  text-align: center;
+}
+.swiper-slide {
+  background-color: white;
+  height: 200px;
+}
+.swiper-slide img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}

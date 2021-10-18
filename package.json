@@ -1,0 +1,30 @@
+{
+  "name": "quyuan",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kobakazu0429/Quyuan.git",
+  "author": "kobakazu0429 <kobakazu10@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production webpack --color --progress",
+    "dev": "NODE_ENV=development webpack serve"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@types/node": "^16.11.1",
+    "@types/webpack": "^5.28.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.4.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "panolens": "0.12.0",
+    "swiper": "^7.0.8"
+  }
+}
