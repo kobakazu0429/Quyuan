@@ -15,7 +15,7 @@ module.exports = /** @type {import("webpack").Configuration} */ ({
 
   resolve: {
     alias: {
-      'handlebars': 'handlebars/dist/handlebars.js'
+      "handlebars": "handlebars/dist/handlebars.js"
     }
   },
 
@@ -23,9 +23,9 @@ module.exports = /** @type {import("webpack").Configuration} */ ({
     clean: true,
     path: path.resolve(__dirname, "./dist"),
     filename: `[name].min.js`,
-    library: 'Quyuan',
-    libraryTarget: 'umd',
-    globalObject: 'this',
+    library: "Quyuan",
+    libraryTarget: "umd",
+    globalObject: "this",
   },
 
   devServer: {
@@ -49,6 +49,7 @@ module.exports = /** @type {import("webpack").Configuration} */ ({
       {
         test: /\.css$/,
         use: [
+          "style-loader",
           {
             loader: "css-loader",
             options: { url: false }

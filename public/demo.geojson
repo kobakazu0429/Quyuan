@@ -28,33 +28,33 @@
         "small_thumbnail": "",
         "images": [
           {
-            "path": "./demos/1.png",
+            "path": "/1.png",
             "shootingDate": "2021-06-20T15:55:32",
             "shooter": "",
             "description": "",
             "note": "",
             "mid_thumbnail": "",
-            "small_thumbnail": "./demos/1.png",
+            "small_thumbnail": "/1.png",
             "panorama_image": true
           },
           {
-            "path": "./images/2/no2.JPG",
+            "path": "./no2.JPG",
             "shootingDate": "2021-06-20T15:55:41",
             "shooter": "",
             "description": "",
             "note": "",
-            "mid_thumbnail": "./mid_thumbs/2/no2.JPG",
-            "small_thumbnail": "./small_thumbs/2/no2.JPG",
+            "mid_thumbnail": "./no2.JPG",
+            "small_thumbnail": "./no2.JPG",
             "panorama_image": false
           },
           {
-            "path": "./demos/2.png",
+            "path": "/2.png",
             "shootingDate": "2021-06-20T15:55:41",
             "shooter": "",
             "description": "",
             "note": "",
             "mid_thumbnail": "",
-            "small_thumbnail": "./demos/2.png",
+            "small_thumbnail": "/2.png",
             "panorama_image": true
           }
         ],
