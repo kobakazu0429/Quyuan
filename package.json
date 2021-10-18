@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production webpack --color --progress",
-    "dev": "NODE_ENV=development webpack serve"
+    "dev": "NODE_ENV=development webpack serve",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
