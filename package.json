@@ -1,0 +1,8 @@
+{
+  "name": "quyuan",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kobakazu0429/Quyuan.git",
+  "author": "kobakazu0429 <kobakazu10@gmail.com>",
+  "license": "MIT"
+}
