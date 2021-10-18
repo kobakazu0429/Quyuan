@@ -55,7 +55,22 @@ module.exports = /** @type {import("webpack").Configuration} */ ({
             options: { url: false }
           }
         ]
+      },
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-env"
+              ]
+            }
+          }
+        ]
       }
     ]
-  }
+  },
+
+  target: ["web", "es5"],
 });
