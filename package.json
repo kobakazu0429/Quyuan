@@ -1,6 +1,6 @@
 {
   "name": "chuquyuan",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "index.js",
   "repository": "https://github.com/code4history/ChuQuyuan.git",
   "author": "kobakazu0429 <kobakazu10@gmail.com>",
@@ -10,8 +10,8 @@
     "src"
   ],
   "scripts": {
-    "build": "NODE_ENV=production webpack --color --progress",
-    "dev": "NODE_ENV=development webpack serve",
+    "build": "cross-env NODE_ENV=production webpack --color --progress",
+    "dev": "cross-env NODE_ENV=development webpack serve",
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "@types/node": "^16.11.1",
     "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.4.0",
     "html-webpack-plugin": "^5.4.0",
     "style-loader": "^3.3.0",
