@@ -13,10 +13,19 @@ module.exports = /** @type {import("webpack").Configuration} */ ({
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
   ],
 
+  resolve: {
+    alias: {
+      'handlebars': 'handlebars/dist/handlebars.js'
+    }
+  },
+
   output: {
     clean: true,
     path: path.resolve(__dirname, "./dist"),
-    filename: "[name]-[contenthash].js"
+    filename: `[name].min.js`,
+    library: 'Quyuan',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
 
   devServer: {
