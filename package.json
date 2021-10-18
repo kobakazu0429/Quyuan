@@ -26,7 +26,8 @@
     "style-loader": "^3.3.0",
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.0",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-dev-server": "^4.3.1",
+    "yarn": "^1.22.17"
   },
   "dependencies": {
     "handlebars": "^4.7.7",
