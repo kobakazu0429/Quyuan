@@ -15,6 +15,6 @@ Handlebars.registerHelper({
   gt: (v1, v2) => v1 > v2,
   lte: (v1, v2) => v1 <= v2,
   gte: (v1, v2) => v1 >= v2,
-  and: () => Array.prototype.slice.call(arguments).every(Boolean),
-  or: () => Array.prototype.slice.call(arguments, 0, -1).some(Boolean),
+  and: (...conditions) => conditions.every(Boolean),
+  or: (...conditions) => conditions.some(Boolean),
 });
